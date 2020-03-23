@@ -1,7 +1,7 @@
 package cn.worth.oauth2.handler;
 
-import cn.worth.common.v2.constant.CommonConstant;
-import cn.worth.common.pojo.R;
+import cn.worth.common.constant.CommonConstant;
+import cn.worth.common.domain.R;
 import cn.worth.oauth2.common.enums.AuthErrorEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;

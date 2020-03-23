@@ -1,7 +1,8 @@
 package cn.worth.oauth2.mapper;
 
-import cn.worth.common.v2.domain.LoginUser;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import cn.worth.oauth2.domain.AuthUser;
+import cn.worth.oauth2.domain.LoginUser;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -11,7 +12,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @description
  **/
 @Mapper
-public interface AuthUserMapper extends BaseMapper<cn.worth.oauth2.domain.AuthUser> {
-    LoginUser loadUserByUsername(cn.worth.oauth2.domain.AuthUser userQuery);
+public interface AuthUserMapper extends BaseMapper<AuthUser> {
+    LoginUser loadUserByUsername(AuthUser userQuery);
 }
 

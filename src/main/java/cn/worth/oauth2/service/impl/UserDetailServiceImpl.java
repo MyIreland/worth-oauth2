@@ -1,6 +1,7 @@
 package cn.worth.oauth2.service.impl;
 
-import cn.worth.common.v2.domain.LoginUser;
+import cn.worth.oauth2.domain.LoginUser;
+import cn.worth.oauth2.domain.UserDetailsImpl;
 import cn.worth.oauth2.service.AuthUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,7 +15,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetailsImpl loadUserByUsername(String username) throws UsernameNotFoundException {
-        LoginUser userVo = userService.findUserByUsername(username);
-        return new UserDetailsImpl(userVo);
+        LoginUser userVO = userService.findUserByUsername(username);
+        return new UserDetailsImpl(userVO);
     }
 }

@@ -1,10 +1,10 @@
 package cn.worth.oauth2.filter;
 
-import cn.worth.common.v2.constant.CommonConstant;
-import cn.worth.common.v2.constant.SecurityConstants;
-import cn.worth.common.v2.exception.BusinessException;
-import cn.worth.common.pojo.R;
-import cn.worth.common.v2.utils.AuthUtils;
+import cn.worth.common.constant.CommonConstant;
+import cn.worth.common.constant.SecurityConstants;
+import cn.worth.common.domain.R;
+import cn.worth.common.exception.BusinessException;
+import cn.worth.oauth2.utils.AuthUtils;
 import cn.worth.oauth2.common.FilterIgnorePropertiesConfiguration;
 import com.xiaoleilu.hutool.collection.CollUtil;
 import com.xiaoleilu.hutool.json.JSONUtil;

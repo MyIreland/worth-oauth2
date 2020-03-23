@@ -16,6 +16,10 @@
             <groupId>cn.worth</groupId>
             <artifactId>worth-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.worth</groupId>
+            <artifactId>worth-mysql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

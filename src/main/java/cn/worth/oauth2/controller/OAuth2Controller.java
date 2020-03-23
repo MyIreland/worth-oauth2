@@ -1,9 +1,9 @@
 package cn.worth.oauth2.controller;
 
-import cn.worth.common.v2.annotation.CurrentUser;
-import cn.worth.common.pojo.R;
-import cn.worth.common.v2.utils.AuthUtils;
-import cn.worth.common.v2.domain.LoginUser;
+import cn.worth.common.annotation.CurrentUser;
+import cn.worth.common.domain.R;
+import cn.worth.oauth2.domain.LoginUser;
+import cn.worth.oauth2.utils.AuthUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.oauth2.provider.token.ConsumerTokenServices;
 import org.springframework.web.bind.annotation.*;

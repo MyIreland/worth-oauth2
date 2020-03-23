@@ -1,9 +1,11 @@
 package cn.worth.oauth2.service;
 
-import cn.worth.common.v2.domain.LoginUser;
-import com.baomidou.mybatisplus.service.IService;
 
-public interface AuthUserService extends IService<cn.worth.oauth2.domain.AuthUser> {
+import cn.worth.oauth2.domain.AuthUser;
+import cn.worth.oauth2.domain.LoginUser;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+public interface AuthUserService extends IService<AuthUser> {
     /**
      * 通过用户名查询用户、角色信息
      *

@@ -1,6 +1,6 @@
 package cn.worth.oauth2.filter;
 
-import cn.worth.common.v2.wrapper.XssHttpServletRequestWrapper;
+import cn.worth.core.wrapper.XssHttpServletRequestWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;

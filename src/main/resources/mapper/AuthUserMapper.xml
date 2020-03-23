@@ -3,20 +3,19 @@
 <mapper namespace="cn.worth.oauth2.mapper.AuthUserMapper">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="LoginUser">
+    <resultMap id="BaseResultMap" type="cn.worth.oauth2.domain.AuthUser">
         <id column="id" property="id" />
         <result column="username" property="username" />
         <result column="sex" property="sex" />
         <result column="avatar" property="avatar" />
         <result column="email" property="email" />
         <result column="mobile" property="mobile" />
-        <result column="dept_id" property="deptId" />
         <result column="tenant_id" property="tenantId" />
         <result column="status" property="status" />
     </resultMap>
 
     <!-- userVo结果集 -->
-    <resultMap id="userVoResultMap" type="LoginUser">
+    <resultMap id="userVoResultMap" type="cn.worth.oauth2.domain.LoginUser">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -26,10 +25,10 @@
         <result column="mobile" property="mobile" />
         <result column="status" property="status"/>
         <result column="real_name" property="realName"/>
-        <collection property="roles" ofType="RoleVo">
+        <collection property="roles" ofType="cn.worth.oauth2.domain.RoleVO">
             <id property="id" column="rid"/>
             <result property="roleCode" column="role_code"/>
-            <collection property="permissions" ofType="MenuVO">
+            <collection property="permissions" ofType="cn.worth.oauth2.domain.MenuVO">
                 <id property="id" column="mid"/>
                 <result property="permission" column="permission"/>
                 <result property="url" column="url"/>

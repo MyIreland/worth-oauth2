@@ -1,7 +1,9 @@
-package cn.worth.oauth2.service.impl;
+package cn.worth.oauth2.domain;
 
 import cn.worth.common.utils.CollectionUtils;
-import cn.worth.common.v2.domain.LoginUser;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,6 +11,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
+@Getter
+@Setter
 public class UserDetailsImpl implements UserDetails {
     private Long id;
     private String username;
@@ -57,46 +62,6 @@ public class UserDetailsImpl implements UserDetails {
         return collection;
     }
 
-    public Set<String> getPerms() {
-        return perms;
-    }
-
-    public void setPerms(Set<String> perms) {
-        this.perms = perms;
-    }
-
-    public Set<String> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(Set<String> menus) {
-        this.menus = menus;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
-    public Long getTenantId() {
-        return tenantId;
-    }
-
-    public void setTenantId(Long tenantId) {
-        this.tenantId = tenantId;
-    }
-
-    public String getRealName() {
-        return realName;
-    }
-
-    public void setRealName(String realName) {
-        this.realName = realName;
-    }
-
     @Override
     public String getPassword() {
         return password;
@@ -125,46 +90,6 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
-
-    public Set<String> getRoleCodes() {
-        return roleCodes;
-    }
-
-    public void setRoleCodes(Set<String> roleCodes) {
-        this.roleCodes = roleCodes;
     }
 
 }

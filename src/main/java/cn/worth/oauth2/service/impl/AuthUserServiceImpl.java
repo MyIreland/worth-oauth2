@@ -2,15 +2,14 @@ package cn.worth.oauth2.service.impl;
 
 import cn.worth.common.utils.CollectionUtils;
 import cn.worth.common.utils.StringUtils;
-import cn.worth.common.v2.domain.LoginUser;
-import cn.worth.common.v2.domain.MenuVO;
-import cn.worth.common.v2.domain.RoleVo;
 import cn.worth.oauth2.domain.AuthUser;
+import cn.worth.oauth2.domain.LoginUser;
+import cn.worth.oauth2.domain.MenuVO;
+import cn.worth.oauth2.domain.RoleVO;
 import cn.worth.oauth2.mapper.AuthUserMapper;
 import cn.worth.oauth2.service.AuthUserService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,8 +29,8 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser> i
         AuthUser query = new AuthUser();
         query.setUsername(username);
         LoginUser loginUser = baseMapper.loadUserByUsername(query);
-        List<RoleVo> roles = loginUser.getRoles();
-        Set<String> roleCodes = roles.stream().map(RoleVo::getRoleCode).collect(Collectors.toSet());
+        List<RoleVO> roles = loginUser.getRoles();
+        Set<String> roleCodes = roles.stream().map(RoleVO::getRoleCode).collect(Collectors.toSet());
         Set<String> allPerms = new HashSet<>();
         roles.forEach(res -> {
             Set<MenuVO> permissions = res.getPermissions();

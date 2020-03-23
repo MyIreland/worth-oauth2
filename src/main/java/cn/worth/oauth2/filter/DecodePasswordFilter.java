@@ -1,7 +1,7 @@
 package cn.worth.oauth2.filter;
 
-import cn.worth.common.v2.constant.SecurityConstants;
-import cn.worth.common.v2.wrapper.MutableHttpServletRequestWrapper;
+import cn.worth.common.constant.SecurityConstants;
+import cn.worth.core.wrapper.MutableHttpServletRequestWrapper;
 import com.xiaoleilu.hutool.codec.Base64;
 import com.xiaoleilu.hutool.util.CharsetUtil;
 import com.xiaoleilu.hutool.util.StrUtil;

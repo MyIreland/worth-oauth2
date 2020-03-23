@@ -1,8 +1,7 @@
 package cn.worth.oauth2.handler;
 
-import cn.worth.common.v2.constant.CommonConstant;
-import cn.worth.common.pojo.R;
-import cn.worth.common.utils.StringUtils;
+import cn.worth.common.constant.CommonConstant;
+import cn.worth.common.domain.R;
 import cn.worth.oauth2.common.enums.AuthErrorEnum;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +9,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

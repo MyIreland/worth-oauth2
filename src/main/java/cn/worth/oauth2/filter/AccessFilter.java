@@ -1,7 +1,7 @@
 package cn.worth.oauth2.filter;
 
-import cn.worth.common.v2.constant.SecurityConstants;
-import cn.worth.common.v2.wrapper.MutableHttpServletRequestWrapper;
+import cn.worth.common.constant.SecurityConstants;
+import cn.worth.core.wrapper.MutableHttpServletRequestWrapper;
 import com.xiaoleilu.hutool.collection.CollectionUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

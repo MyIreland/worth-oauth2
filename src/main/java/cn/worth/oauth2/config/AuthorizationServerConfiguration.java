@@ -1,10 +1,10 @@
 package cn.worth.oauth2.config;
 
-import cn.worth.common.v2.constant.CommonConstant;
-import cn.worth.common.v2.constant.SecurityConstants;
+import cn.worth.common.constant.CommonConstant;
+import cn.worth.common.constant.SecurityConstants;
 import cn.worth.oauth2.common.RandomAuthenticationKeyGenerator;
 import cn.worth.oauth2.common.RedisTokenStore;
-import cn.worth.oauth2.service.impl.UserDetailsImpl;
+import cn.worth.oauth2.domain.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
