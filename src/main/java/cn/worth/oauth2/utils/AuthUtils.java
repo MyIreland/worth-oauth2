@@ -54,7 +54,7 @@ public class AuthUtils {
      */
     public static String[] extractAndDecodeHeader(HttpServletRequest request)
             throws IOException {
-        String header = request.getHeader("Authorization");
+        String header = request.getHeader(CommonConstant.AUTH_HEADER);
 
         if (header == null || !header.startsWith(BASIC_)) {
             throw new BusinessException("请求头中client信息为空");
