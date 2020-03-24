@@ -1,6 +1,7 @@
 package cn.worth.oauth2.domain;
 
 import cn.worth.common.utils.CollectionUtils;
+import cn.worth.core.domain.LoginUser;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;

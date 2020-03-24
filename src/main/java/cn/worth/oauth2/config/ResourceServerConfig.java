@@ -1,6 +1,6 @@
+
 package cn.worth.oauth2.config;
 
-import cn.worth.oauth2.common.FilterIgnorePropertiesConfiguration;
 import cn.worth.oauth2.handler.CustomAccessDeniedHandler;
 import cn.worth.oauth2.handler.CustomAuthenticationEntryPoint;
 import cn.worth.oauth2.handler.CustomLogoutSuccessHandler;
@@ -28,19 +28,16 @@ import org.springframework.security.oauth2.provider.expression.OAuth2WebSecurity
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Autowired
-    private FilterIgnorePropertiesConfiguration filterIgnorePropertiesConfig;
+    private FilterIgnoreProperties filterIgnorePropertiesConfig;
 
     @Autowired
     private OAuth2WebSecurityExpressionHandler expressionHandler;
 
     @Autowired
     private CustomAccessDeniedHandler accessDeniedHandler;
-
-    @Autowired
-    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Autowired
     private CustomAuthenticationEntryPoint entryPoint;
@@ -59,7 +56,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .logout()
                 .logoutUrl("/oauth/logout")
-                .logoutSuccessHandler(customLogoutSuccessHandler);
+                .logoutSuccessHandler(customLogoutSuccessHandler());
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
                 .authorizeRequests();
@@ -89,8 +86,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         return expressionHandler;
     }
 
-//    @Bean
-//    public CustomLogoutSuccessHandler customLogoutSuccessHandler(){
-//        return new CustomLogoutSuccessHandler();
-//    }
+    @Bean
+    public CustomLogoutSuccessHandler customLogoutSuccessHandler(){
+        return new CustomLogoutSuccessHandler();
+    }
 }

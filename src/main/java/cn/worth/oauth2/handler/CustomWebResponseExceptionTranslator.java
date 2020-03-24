@@ -1,6 +1,6 @@
 package cn.worth.oauth2.handler;
 
-import cn.worth.oauth2.common.enums.AuthErrorEnum;
+import cn.worth.oauth2.enums.AuthErrorEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;

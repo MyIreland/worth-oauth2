@@ -1,14 +1,10 @@
 package cn.worth.oauth2.config;
 
 import cn.worth.common.constant.CommonConstant;
-import cn.worth.common.constant.SecurityConstants;
-import cn.worth.oauth2.common.RandomAuthenticationKeyGenerator;
-import cn.worth.oauth2.common.RedisTokenStore;
 import cn.worth.oauth2.domain.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,10 +17,10 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.error.WebResponseExceptionTranslator;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -40,7 +36,7 @@ import java.util.Map;
  */
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -74,7 +70,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         //token增强配置
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), jwtAccessTokenConverter()));
-        endpoints.tokenStore(redisTokenStore())
+        endpoints.tokenStore(inMemoryTokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager)
                 .reuseRefreshTokens(false)
@@ -97,30 +93,36 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      * RedisTokenStore tokenStore = new RedisTokenStore();
      * tokenStore.setRedisTemplate(redisTemplate);
      */
-    @Bean
-    public TokenStore redisTokenStore() {
-        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        tokenStore.setPrefix(SecurityConstants.NW_PREFIX);
-        // 2018.09.04添加,解决同一username每次登陆access_token都相同的问题
-        tokenStore.setAuthenticationKeyGenerator(new RandomAuthenticationKeyGenerator());
+//    @Bean
+//    public TokenStore redisTokenStore() {
+//        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+//        tokenStore.setPrefix(SecurityConstants.NW_PREFIX);
+//        // 解决同一username每次登陆access_token都相同的问题
+//        tokenStore.setAuthenticationKeyGenerator(new RandomAuthenticationKeyGenerator());
+//
+//        return tokenStore;
+//    }
 
-        return tokenStore;
+    @Bean
+    public TokenStore inMemoryTokenStore() {
+
+        return new InMemoryTokenStore();
     }
 
-    @Bean
-    @Primary
-    public DefaultTokenServices tokenServices() {
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(redisTokenStore());
-        defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setTokenEnhancer(jwtAccessTokenConverter());
-        return defaultTokenServices;
-    }
+//    @Bean
+//    @Primary
+//    public DefaultTokenServices tokenServices() {
+//        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+//        defaultTokenServices.setTokenStore(redisTokenStore());
+//        defaultTokenServices.setSupportRefreshToken(true);
+//        defaultTokenServices.setTokenEnhancer(jwtAccessTokenConverter());
+//        return defaultTokenServices;
+//    }
 
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        // 2018.07.29 这里务必设置一个，否则多台认证中心的话，一旦使用jwt方式，access_token将解析错误
+        // 这里务必设置一个，否则多台认证中心的话，一旦使用jwt方式，access_token将解析错误
         jwtAccessTokenConverter.setSigningKey(CommonConstant.SIGN_KEY);
         return jwtAccessTokenConverter;
     }

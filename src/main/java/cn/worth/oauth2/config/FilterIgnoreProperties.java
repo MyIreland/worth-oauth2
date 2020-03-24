@@ -1,4 +1,4 @@
-package cn.worth.oauth2.common;
+package cn.worth.oauth2.config;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -15,7 +15,7 @@ import java.util.List;
 @Configuration
 @ConditionalOnExpression("!'${ignore}'.isEmpty()")
 @ConfigurationProperties(prefix = "ignore")
-public class FilterIgnorePropertiesConfiguration {
+public class FilterIgnoreProperties {
     private List<String> urls = new ArrayList<>();
 
     private List<String> clients = new ArrayList<>();

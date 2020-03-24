@@ -5,7 +5,7 @@ import cn.worth.common.constant.SecurityConstants;
 import cn.worth.common.domain.R;
 import cn.worth.common.exception.BusinessException;
 import cn.worth.oauth2.utils.AuthUtils;
-import cn.worth.oauth2.common.FilterIgnorePropertiesConfiguration;
+import cn.worth.oauth2.config.FilterIgnoreProperties;
 import com.xiaoleilu.hutool.collection.CollUtil;
 import com.xiaoleilu.hutool.json.JSONUtil;
 import com.xiaoleilu.hutool.util.StrUtil;
@@ -43,7 +43,7 @@ public class ValidateCodeFilter extends OncePerRequestFilter {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private FilterIgnorePropertiesConfiguration filterIgnorePropertiesConfig;
+    private FilterIgnoreProperties filterIgnorePropertiesConfig;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {

@@ -1,5 +1,5 @@
-package cn.worth.oauth2.common.enums;
 
+package cn.worth.oauth2.enums;
 import org.springframework.http.HttpStatus;
 
 /**

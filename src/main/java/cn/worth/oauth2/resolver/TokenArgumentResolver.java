@@ -1,7 +1,7 @@
 package cn.worth.oauth2.resolver;
 
 import cn.worth.common.annotation.CurrentUser;
-import cn.worth.oauth2.domain.LoginUser;
+import cn.worth.core.domain.LoginUser;
 import cn.worth.oauth2.utils.UserUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;

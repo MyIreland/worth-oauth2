@@ -2,10 +2,10 @@ package cn.worth.oauth2.service.impl;
 
 import cn.worth.common.utils.CollectionUtils;
 import cn.worth.common.utils.StringUtils;
+import cn.worth.core.domain.LoginUser;
+import cn.worth.core.domain.MenuVO;
+import cn.worth.core.domain.RoleVO;
 import cn.worth.oauth2.domain.AuthUser;
-import cn.worth.oauth2.domain.LoginUser;
-import cn.worth.oauth2.domain.MenuVO;
-import cn.worth.oauth2.domain.RoleVO;
 import cn.worth.oauth2.mapper.AuthUserMapper;
 import cn.worth.oauth2.service.AuthUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

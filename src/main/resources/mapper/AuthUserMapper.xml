@@ -15,7 +15,7 @@
     </resultMap>
 
     <!-- userVo结果集 -->
-    <resultMap id="userVoResultMap" type="cn.worth.oauth2.domain.LoginUser">
+    <resultMap id="userVoResultMap" type="cn.worth.core.domain.LoginUser">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
@@ -25,10 +25,10 @@
         <result column="mobile" property="mobile" />
         <result column="status" property="status"/>
         <result column="real_name" property="realName"/>
-        <collection property="roles" ofType="cn.worth.oauth2.domain.RoleVO">
+        <collection property="roles" ofType="cn.worth.core.domain.RoleVO">
             <id property="id" column="rid"/>
             <result property="roleCode" column="role_code"/>
-            <collection property="permissions" ofType="cn.worth.oauth2.domain.MenuVO">
+            <collection property="permissions" ofType="cn.worth.core.domain.MenuVO">
                 <id property="id" column="mid"/>
                 <result property="permission" column="permission"/>
                 <result property="url" column="url"/>

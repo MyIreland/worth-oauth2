@@ -2,7 +2,7 @@ package cn.worth.oauth2.utils;
 
 import cn.worth.common.constant.CommonConstant;
 import cn.worth.common.utils.StringUtils;
-import cn.worth.oauth2.domain.LoginUser;
+import cn.worth.core.domain.LoginUser;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.ttl.TransmittableThreadLocal;
 import io.jsonwebtoken.Claims;
