@@ -19,11 +19,9 @@ import java.io.IOException;
 public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements LogoutSuccessHandler {
 
     @Autowired
-    @Qualifier("consumerTokenServices")
     private ConsumerTokenServices consumerTokenServices;
 
     @Override
-    //@CacheEvict(value = SecurityConstants.TOKEN_USER_DETAIL, key = "#accesstoken")
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         String accessToken = AuthUtils.getBearerToken(request);
         if (!StringUtils.isEmpty(accessToken)) {

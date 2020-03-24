@@ -18,18 +18,18 @@ import javax.servlet.http.HttpServletRequest;
  * @description
  **/
 @RestController
-@RequestMapping("oauth")
+@RequestMapping("/oauth")
 public class OAuth2Controller {
 
     @Resource
     private ConsumerTokenServices consumerTokenServices;
 
-    @GetMapping("currentUser")
+    @GetMapping("/currentUser")
     public R currentUser(@CurrentUser LoginUser loginUser){
         return R.success(loginUser);
     }
 
-    @PostMapping("logout")
+    @PostMapping("/logout")
     public R logout(HttpServletRequest request){
         String accessToken = AuthUtils.getBearerToken(request);
         if(StringUtils.isNotBlank(accessToken)){

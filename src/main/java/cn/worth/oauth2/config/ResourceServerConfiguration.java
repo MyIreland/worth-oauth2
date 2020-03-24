@@ -40,6 +40,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     private CustomAccessDeniedHandler accessDeniedHandler;
 
     @Autowired
+    private CustomLogoutSuccessHandler customLogoutSuccessHandler;
+
+    @Autowired
     private CustomAuthenticationEntryPoint entryPoint;
 
     @Value("${spring.application.name}")
@@ -56,7 +59,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .logout()
                 .logoutUrl("/oauth/logout")
-                .logoutSuccessHandler(customLogoutSuccessHandler());
+                .logoutSuccessHandler(customLogoutSuccessHandler);
 
         ExpressionUrlAuthorizationConfigurer<HttpSecurity>.ExpressionInterceptUrlRegistry registry = http
                 .authorizeRequests();
@@ -86,8 +89,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         return expressionHandler;
     }
 
-    @Bean
-    public CustomLogoutSuccessHandler customLogoutSuccessHandler(){
-        return new CustomLogoutSuccessHandler();
-    }
+//    @Bean
+//    public CustomLogoutSuccessHandler customLogoutSuccessHandler(){
+//        return new CustomLogoutSuccessHandler();
+//    }
 }
