@@ -84,8 +84,7 @@ public class UserUtils {
 
             Object principal = authentication.getPrincipal();
 
-            LoginUser authUser = JSONObject.parseObject(JSONObject.toJSONString(principal), LoginUser.class);
-            return authUser;
+            return JSONObject.parseObject(JSONObject.toJSONString(principal), LoginUser.class);
         }
 
         return null;
