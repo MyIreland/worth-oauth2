@@ -21,20 +21,20 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/oauth")
 public class OAuth2Controller {
 
-    @Resource
-    private ConsumerTokenServices consumerTokenServices;
+//    @Resource
+//    private ConsumerTokenServices consumerTokenServices;
 
     @GetMapping("/currentUser")
     public R currentUser(@CurrentUser LoginUser loginUser){
         return R.success(loginUser);
     }
 
-    @PostMapping("/logout")
-    public R logout(HttpServletRequest request){
-        String accessToken = AuthUtils.getBearerToken(request);
-        if(StringUtils.isNotBlank(accessToken)){
-            consumerTokenServices.revokeToken(accessToken);
-        }
-        return R.success("");
-    }
+//    @PostMapping("/logout")
+//    public R logout(HttpServletRequest request){
+//        String accessToken = AuthUtils.getBearerToken(request);
+//        if(StringUtils.isNotBlank(accessToken)){
+//            consumerTokenServices.revokeToken(accessToken);
+//        }
+//        return R.success("");
+//    }
 }

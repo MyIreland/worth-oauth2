@@ -2,6 +2,7 @@ package cn.worth.oauth2.handler;
 
 import cn.worth.common.utils.StringUtils;
 import cn.worth.oauth2.utils.AuthUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
@@ -14,7 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@Slf4j
 @Component
 public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlRequestHandler implements LogoutSuccessHandler {
 
@@ -27,7 +28,7 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
         if (!StringUtils.isEmpty(accessToken)) {
             consumerTokenServices.revokeToken(accessToken);
         }
-
+        log.info("{},用户退出成功", accessToken);
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }
