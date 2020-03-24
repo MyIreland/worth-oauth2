@@ -14,7 +14,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 /**
  * @Author: chenxiaoqing9
  * @Date: Created in 2019/3/19
- * Token转化UserVo
+ * Token转化LoginUser
  */
 @Slf4j
 @Configuration
