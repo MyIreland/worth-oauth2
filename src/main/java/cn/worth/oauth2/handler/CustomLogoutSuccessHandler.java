@@ -28,7 +28,7 @@ public class CustomLogoutSuccessHandler extends AbstractAuthenticationTargetUrlR
         if (!StringUtils.isEmpty(accessToken)) {
             consumerTokenServices.revokeToken(accessToken);
         }
-        log.info("{},用户退出成功", accessToken);
+        log.info("用户退出成功:{}", accessToken);
         response.setStatus(HttpServletResponse.SC_OK);
     }
 }
