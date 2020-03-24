@@ -44,11 +44,12 @@ public class UserAspect {
             log.info("Controller AOP get username:{}", username);
             UserUtils.setUser(username);
         }
+        Object result = pjp.proceed();
 
         if (StrUtil.isNotEmpty(username)) {
             UserUtils.clearAllUserInfo();
         }
 
-        return pjp.proceed();
+        return result;
     }
 }
