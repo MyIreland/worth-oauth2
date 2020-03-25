@@ -1,6 +1,9 @@
 package cn.worth.oauth2.config;
 
 import cn.worth.common.constant.CommonConstant;
+import cn.worth.common.constant.SecurityConstants;
+import cn.worth.oauth2.common.RandomAuthenticationKeyGenerator;
+import cn.worth.oauth2.common.RedisTokenStore;
 import cn.worth.oauth2.domain.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +23,6 @@ import org.springframework.security.oauth2.provider.error.WebResponseExceptionTr
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import javax.sql.DataSource;
 import java.util.Arrays;
@@ -70,7 +72,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         //token增强配置
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer(), jwtAccessTokenConverter()));
-        endpoints.tokenStore(inMemoryTokenStore())
+        endpoints.tokenStore(redisTokenStore())
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager)
                 .reuseRefreshTokens(false)
@@ -93,21 +95,21 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      * RedisTokenStore tokenStore = new RedisTokenStore();
      * tokenStore.setRedisTemplate(redisTemplate);
      */
-//    @Bean
-//    public TokenStore redisTokenStore() {
-//        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-//        tokenStore.setPrefix(SecurityConstants.NW_PREFIX);
-//        // 解决同一username每次登陆access_token都相同的问题
-//        tokenStore.setAuthenticationKeyGenerator(new RandomAuthenticationKeyGenerator());
-//
-//        return tokenStore;
-//    }
-
     @Bean
-    public TokenStore inMemoryTokenStore() {
+    public TokenStore redisTokenStore() {
+        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+        tokenStore.setPrefix(SecurityConstants.NW_PREFIX);
+        // 解决同一username每次登陆access_token都相同的问题
+        tokenStore.setAuthenticationKeyGenerator(new RandomAuthenticationKeyGenerator());
 
-        return new InMemoryTokenStore();
+        return tokenStore;
     }
+
+//    @Bean
+//    public TokenStore inMemoryTokenStore() {
+//
+//        return new InMemoryTokenStore();
+//    }
 
 //    @Bean
 //    @Primary
