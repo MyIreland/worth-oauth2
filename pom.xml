@@ -18,13 +18,12 @@
         </dependency>
         <dependency>
             <groupId>cn.worth</groupId>
-            <artifactId>worth-mysql</artifactId>
+            <artifactId>worth-druid-springboot-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.worth</groupId>
-            <artifactId>worth-redis-spring-boot-starter</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <artifactId>worth-redis-springboot-starter</artifactId>
         </dependency>
 
         <!-- spring-security-oauth2-autoconfigure -->
